@@ -1,0 +1,34 @@
+// ==UserScript==
+// @name         Menu Button Hover Effect
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  uwu
+// @author       You
+// @match        https://narrow.one/
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    function enhanceMenuButtons() {
+        let menuButtons = document.querySelectorAll(".main-menu-button");
+
+        menuButtons.forEach(button => {
+            button.style.transition = "transform 0.1s ease-in-out"; // Hover Effect
+
+            button.addEventListener("mouseenter", function() {
+                this.style.transform = "scale(1.2)";
+            });
+
+            button.addEventListener("mouseleave", function() {
+                this.style.transform = "scale(1)";
+            });
+        });
+    }
+
+    // Đợi trang load xong rồi áp dụng hiệu ứng menu
+    window.onload = function() {
+        setTimeout(enhanceMenuButtons, 2000);
+    };
+})();
